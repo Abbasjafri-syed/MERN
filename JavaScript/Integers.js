@@ -103,3 +103,50 @@ console.log('Your BMI Index is ' + square);
 //formula for exponent
 var square1 = Math.pow(4, 2) // first input is value 2nd input is exponent
 console.log('Your BMI Index is ' + square1);
+
+//while loop only run when condition is true
+var i = 100;
+
+    while (i <= 100) {
+        console.log(i);
+        i++;
+    }
+
+
+// random person selection
+
+var name = ['Ali', 'Akbar', 'Ahmed'];
+
+function selectPerson() {
+
+ var person = name.length // measuring length of array index
+
+ var choose = Math.floor(Math.random() * person); //.floor is most appropriate as it gives value within the range
+
+  var Random = name[choose]; //inputing random number for selection
+
+ console.log(Random +' is going to pay for bills...');
+}
+
+selectPerson();
+
+//creating fibonacci series
+var output = [];
+
+function fSeries(n) {
+    if (n == 1) {
+        output = [0];
+    }
+    else if (n == 2) {
+        output = [0, 1];
+    }
+    else {
+        output = [0, 1];
+        for (let i = 2; i < n; i++) { // if given value is greater than 2..increment
+            output.push(output[output.length - 2] + output[output.length - 1])
+        }
+    }
+    return output //code stop here
+}
+output = fSeries(9); //saving value of n into output array
+console.log(output);
