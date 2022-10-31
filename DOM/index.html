@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+
+    <link rel="stylesheet" href="styles.css">  <!-- linking css file in html -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">  <!-- adding fonts from google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Island+Moments&family=Lobster&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    
+    <div class="container">  <!-- making div in which all content are linked -->
+        <h1>Refresh Me...</h1>
+
+        <div class="dice">    <!-- creating class for particular attributes -->
+            <p>Player 1</p>
+            <img class="img1" src="./images/dice6.png">  <!-- image that will change due to DOM manipulation -->
+        </div>
+
+        <div class="dice">
+            <p>Player 2</p>
+            <img class="img2" src="./images/dice6.png"> <!-- same for DOM manipulation -->
+        </div>
+    </div>
+
+    <script src="./index.js"></script> <!-- linking js file in html - best practice to keep js link in lower of body -->
+</body>
+
+<footer>
+    Dice Games  <!-- creating a footer -->
+</footer>
+
+</html>

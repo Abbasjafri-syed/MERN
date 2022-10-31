@@ -1,0 +1,42 @@
+body {
+    background-color: #393E46;
+}
+
+.container {
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+h1 {
+    font-family: Lobster, cursive;
+    font-size: 6rem;
+    color: slategrey;
+    text-align: center;
+    margin: 30px;
+}
+
+.dice {
+    text-align: center;
+    display: inline-block;
+    margin: 0 50px 0 50px;
+}
+
+p {
+    font-size: 2rem;
+    color: aqua;
+    font-family: cursive;
+}
+
+img {
+    width: 80%;
+}
+
+footer {
+    font-family: Island Moments;
+    margin-top: 8%;
+    color: aliceblue;
+    text-align: center;
+    font-size: 2rem;
+    ;
+}
