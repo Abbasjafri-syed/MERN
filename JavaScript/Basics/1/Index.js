@@ -107,7 +107,7 @@ console.log(c1);
 //  conditionals check if-else
 
 function checkAge(age) {
-    if (age > 19) {  // checking if parameter is gt
+    if (age > 18) {  // checking if parameter is gt
         console.log('You can drive');
     }
     else if (age == 18) { // checking if parameter is exactly equal
@@ -117,7 +117,7 @@ function checkAge(age) {
         console.log('You cannot drive any vehicle');
     }
 }
-console.log(checkAge(13)); // passing value in arg of function
+console.log(checkAge(18)); // passing value in arg of function
 
 // arrays
 
@@ -167,3 +167,82 @@ console.log(arr.splice(1, 2, 56, 224, 345));
 
 // returing elements from zero index till 5th index total 6 element [n-1]
 console.log(arr.splice(0, 6));
+
+// using multiple conditions to create logic
+
+a = 2;
+b = 3;
+
+c = a < b;  // a is less than b
+d = b <= a; // b is less than or equal to a
+e = b >= a; // b is greater than or equal to a
+
+// console.log(c && d);
+// console.log(c && e);
+// console.log(c || d);
+// console.log(c != d);
+// console.log(c != e); // c and e are equal
+
+// loops  
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+addarr = [];
+
+for (i = 0; i < arr.length; i++) {
+    addarr.push(arr[i]); //loop first comes to push method...
+    arr.shift(i); // then loop removes first index detected...
+}
+console.log('addarr array', addarr);
+
+/* print how many times loop runs and gives last respective values
+still have confusion and needs clarification [clue is in pop method]*/
+console.log('arr array', arr);
+
+
+let arrted = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+
+// forEach loop executes with a function
+arrted.forEach(function (i) { // paramter same as for loop
+    console.log(i);
+});
+
+let kj = 10; // will throw error as there is no 10th index in arrted
+
+// //do-while loop runs one tine before checking the condition
+do { // here loops runs
+    console.log('do loop', arrted[kj]);
+    kj++;
+} while (kj < arrted.length); // here condition is checked
+
+
+// while loop run while condition is true
+while (kj < arrted.length) { //here condition is checked and then run
+    console.log('while loop', arrted[kj]);
+    kj++;
+}
+
+
+// break and continue
+
+arr1 = ['a1', 'a2', 'a3', 'a4', 'a5', 1, 2, 4, 323, 11]
+
+for (let i = 0; i < arr1.length; i++) {
+    if (i == 2) {
+        break; // break means stop at given index
+    }
+    console.log(arr1[i]);
+}
+
+for (let i = 0; i < arr1.length; i++) {
+    if (i == 2) {
+        continue; // continue means skip given index
+    }
+    console.log(arr1[i]);
+}
+
+let str = 'i am a string';
+
+console.log('string length: ',str.length);
+console.log('string index: ',str.indexOf('string'));
+console.log('string last index: ',str.lastIndexOf('am'));
+console.log('replace string method: ',str.replace('string', 'text'));
+
