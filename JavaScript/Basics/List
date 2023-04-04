@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ToDo-List list</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+
+
+<body>
+
+
+    <div class="container my-4">
+        <h2 class="text-center"><strong>ToDo-List</strong> </h2>
+        <!-- <form> -->
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"> <b>Title</b> </label>
+            <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+        </div>
+        <div class="form-class">
+            <label for="description"><b>Description</b> </label>
+            <br>
+            <textarea class="form" id="description" cols="149" rows="07"></textarea>
+        </div>
+        <br>
+        <div class="status">
+            <label> <b>Select Status</b> </label>
+            <select style="background-color: black; color: aliceblue;" id="stat">
+                <option value="Not-Started">Not-Started </option>
+                <option value="In-Process">In-Process</option>
+                <option value="Completed">Completed</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit" id="add" class="btn btn-primary">Add-to-List</button>
+
+
+        <div class="items my-4">
+            <h2>Your items</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">S.no#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="itembody">
+                    <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button type="submit" class="action btn btn-primary">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button id="clear" class="btn btn-primary my-4" onclick="clearstorage()">Clear-List</button>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script>
+
+        function getupdate() {
+
+            let headings = document.getElementById('title').value; // saving id value into a variable
+            let descrpt = document.getElementById('description').value;
+            let stat = document.getElementById('stat').value;
+            if (localStorage.getItem('items') == null) { // if item is being created for the first time
+                itemarr = [];
+                itemarr.push([headings, descrpt, stat]);
+                localStorage.setItem('items', JSON.stringify(itemarr));
+            } else { // getting items and updating list
+                itemstrng = localStorage.getItem('items');
+                itemarr = JSON.parse(itemstrng); // parse is used to convert a text into object
+                itemarr.push([headings, descrpt, stat]);
+                localStorage.setItem('items', JSON.stringify(itemarr));
+            }
+            update();
+            console.log('List updated....');
+        }
+
+        // update item list
+
+        function update() {
+            if (localStorage.getItem('items') == null) { // if item is being created for the first time
+                itemarr = [];
+                localStorage.setItem('items', JSON.stringify(itemarr));
+            }
+            else { // getting items and updating list
+                itemstrng = localStorage.getItem('items');
+                itemarr = JSON.parse(itemstrng); // parse is used to convert a text into object
+            }
+
+            itembdy = document.getElementById('itembody');
+            let str = ""; // initialising variable with no value returns undefined
+
+            itemarr.forEach((element, index) => {
+                str += `
+            <tr>
+            <th scope="row">${index + 1}</th>
+                        <td>${element[0]}</td>
+                        <td>${element[1]}</td>
+                        <td>${element[2]}</td>
+                        <td><button class="action btn btn-primary" onclick = "deleteList(${index})">Delete</button></td>
+                        </tr>
+                        `;
+            });
+            itembdy.innerHTML = str;
+        }
+
+        let list = document.getElementById('add');
+        let updated = list.addEventListener('click', getupdate);
+        // update(); // auto adding list on page reload also adding an empty list on loading...needs proper solution
+
+        function deleteList(itemIndex) {
+            itemstrng = localStorage.getItem('items');
+            itemarr = JSON.parse(itemstrng);
+
+            itemarr.splice(itemIndex, 1); // splice method to delete one item from index
+            localStorage.setItem('items', JSON.stringify(itemarr));
+            update();
+
+
+            console.log('Delete', itemIndex);
+        }
+
+        function clearstorage() {
+            if (confirm('Do you really want to clear the list??')) {
+                localStorage.clear();
+                update();
+                console.log('List is Cleared');
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
