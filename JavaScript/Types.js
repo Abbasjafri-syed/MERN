@@ -116,10 +116,142 @@ let icde = --cde + 2; // (cde - 1  + 2) pre decrement returns value after decrem
 
 
 let pk = 2 ** 3 // 3 is exponent value i.e. power that will be multiplied
-console.log(pk);
+// console.log(pk);
 
 dk = 3 ** -5 // same as  1 / 3 * 3 * 3 * 3 * 3
 tk = 1 / 243 // above equation simplified
 
-console.log('this is dk ', dk);
-console.log('this is tk ', tk);
+// console.log('this is dk ', dk);
+// console.log('this is tk ', tk);
+
+// Swap values
+
+let lk = 9;
+let jk = 13;
+
+// swapping values are carried out through artithmetic operation
+
+jk = lk + 4;
+lk = jk - 4;
+
+// console.log('this is jk ', jk);
+// console.log('this is lk ', lk);
+
+
+// value and data types
+
+txt = '14';
+str = 14;
+
+// console.log(txt == str); // returns true as compare only value
+// console.log(txt === str); // return false by comparing value as well as data type
+
+
+
+
+
+// Iteration in loop
+
+// data types NaN, null, undefined, 0, ''... are by default false; 
+// commonly known as false values
+
+if (work = NaN) {
+    // console.log('This is true condition');
+} else {
+    // console.log('This is false condition');
+}
+
+// switch loop
+let area = 'circle';
+
+switch (area) { // checking condition for loop to run
+
+    case 'circle': // case should be within  quotes
+    // console.log('this area is circle');
+    // break;
+
+    case 'triangle':
+        // console.log('this area is triangle');
+        break; // break keyword stop the whole code
+
+    case 'PI':
+    // console.log('this area is pi');
+    // break;
+
+    default: // default case is when no conditin is matched
+    // console.log('this area is Unexplored');
+}
+
+// while loop
+
+let xarr = 10;
+
+while (xarr <= 10) { // while loop checks the condition first then execute the logic
+    // console.log(xarr);
+    xarr++; // incrementing value till condition is not met
+}
+
+
+
+// do while loop
+
+arr = 11;
+// do {
+//     console.log(arr); // logic  run here first then evaluates the condition
+//     arr++;
+// } while (arr <= 10); // condition is checked here
+
+
+
+
+// for loop
+
+j = 10 // variable value
+
+if (j <= 10) { // condition for variable value either less than or equal to
+    for (let i = 0; i < j; i++) {
+        // console.log(i); // printing index of variable
+        // console.log('this is 1st loop', i);
+    }
+} else { // if above condition is not met then this condition is met
+    for (let i = 0; i <= j; i++) {
+        // console.log(i);
+        // console.log('this is 2nd loop', i);
+    }
+}
+
+
+j = [1, 2, 3, 4, 5, 'a', true,] // array value
+
+if (j.length <= 10) { //checking condition for array value
+    for (let i = 0; i < j.length; i++) {
+        // console.log(j[i]); // printing value for every array element according to index
+        // console.log('this is 1st loop', i);
+    }
+} else {
+    for (let i = 0; i <= j.length; i++) {
+        // console.log(i);
+        // console.log('this is 2nd loop', i);
+    }
+}
+
+
+// printing table using for loop
+
+tble = 8
+for (let i = 1; i <= 10; i++) {
+
+    // console.log(tble, 'x', i, '=', tble * i);
+
+}
+
+// printing table using while loop
+jfx = 5;
+let i = 1; // intialising variable
+
+while (i <= 10) { //defining condition
+    console.log(jfx, 'x', i, '=', jfx * i);
+    i++; //iterating variable
+}
+
+
