@@ -1,0 +1,153 @@
+<!-- 
+  
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body bgcolor="green">
+    <div class="main-div"> This is main div </div> <!-- mouse event method -->
+<!-- <br>
+<p class="main">This is paragraph</p>
+<br>
+<strong class="main-div">This is bold element</strong>
+<br>
+<br>
+<input type="text" onkeypress="keyPress()" onkeydown="keyDown()" onkeyup="keyUp()"> <!-- key event method -->
+<!-- <br>
+<p class="keeper"></p>
+<br>
+<p class="deeper"></p>
+<br>
+</div>
+<div>
+    <label for=""> Enter your Name:</label>
+    <input type="text" id="naam">
+    <br><br>
+    <label for=""> Choose your Icecream Flavour
+        <br>
+        <select name="" style="background-color: blue;" id="iced" onchange="inputs()"> input events -->
+            <!-- <option value="">Icecream Flavour</option>
+            <option value="Mango">Mango</option>
+            <option value="Chocolate">Chocolate</option>
+            <option value="Strawberry">Strawberry</option>
+            <option value="Cadbury">Cadbury</option>
+            <option value="Cheese">Cheese</option>
+        </select>
+    </label>
+    <br>
+    <p id="result"></p>
+
+    <br> 
+
+    <p>Do you have the reflex to Win...</p>
+    <p id="Rndm">Random Number...</p>
+    <p id="count"></p>
+    <button id="gnt"> Generate Number</button>
+    <button id="btn"> Click to Begin..</button>
+    <button id="stp"> STOP</button>
+
+
+</div> -->
+
+<script>
+
+    // mouse events...based on mouse actions
+
+    // work on change all text using queryselectorall
+    let elm = document.querySelector('.main').innerText; //query selector change only 1st element
+
+    document.addEventListener('click', () => { // changing inner text using index of class saved in variable
+        document.querySelector('.main').innerText = 'MOUSE ENTERED';
+        console.log(event); // conosling event types and other details
+        console.log(event.target);
+        console.log(event.type);
+    });
+
+    document.addEventListener('mouseout', () => { // changing inner text using mouse event
+        document.querySelector('.main').innerText = elm;
+    });
+
+    document.addEventListener('mousedown', () => { // changing inner text using mouse click
+        document.body.style.backgroundColor = 'limegreen';
+    });
+
+    document.addEventListener('mouseup', () => { // changing inner text using mouse unclicked
+        document.body.style.backgroundColor = 'green';
+    });
+
+    // keyboard Events..based on keyboard key pressed
+    keyPress = () => { // class name is always done using index number
+        document.getElementsByClassName("keeper")[0].innerText = `The Key pressed is ${event.key} and is its code is ${event.code} `
+    };
+
+    keyUp = () => {
+        document.getElementsByClassName('deeper')[0].innerText = `The Key exits...`
+    };
+
+    keyDown = () => {
+        document.getElementsByClassName('deeper')[0].innerText = `The Key enters...`
+    };
+
+    // input events..based on changing event values
+    inputs = () => {
+        nameTag = document.getElementById('naam').value; // collecting input value 
+        flavrTag = document.getElementById('iced').value;
+
+        document.getElementById('result').innerText = `${nameTag} you have selected ${flavrTag} flavoured Icecream....`;
+    };
+
+
+    let num = 0;
+    rndm = Math.floor(Math.random() * 89) + 10; // always generate 2 digit value between 100 till 500
+    rndom = document.getElementById('Rndm');
+    cnt = document.getElementById('count');
+
+    gnt = document.getElementById('gnt');
+    btn = document.getElementById('btn');
+    stp = document.getElementById('stp');
+
+
+    gnt.addEventListener('click', () => {
+        rndom.innerText = rndm;
+    });
+
+    btn.addEventListener('click', () => { // event triggers when begin button clicked
+        if (num == 0) { // no start if number is not generated
+            cnt.innerText = `Please generate number first....`;
+        }
+        strt = setInterval(() => {
+            if (rndom.innerText == rndm) { // start when random number is  generated
+                cnt.innerText = `${num}`;
+                num++;
+            }
+            if (num > rndm) {// breaks when num exceed rndom number
+                cnt.innerText = `The number is now ${num}.....
+                    \n\n Sorry You Loose....`;
+                clearInterval(strt);
+            };
+        }, 50); // num increment every 50 msec;
+    });
+
+    stp.addEventListener('click', () => { // event when stop button is clicked 
+        clearInterval(strt); // above event will be stopped
+        if (num == rndm) {
+            cnt.innerText = `You clicked exactly at ${num}.....
+                \n Congrats You WiNnnnn....`;;
+        }
+        else {
+            cnt.innerText = `You clicked at ${num}...
+                \n Sorry You Loose...`;
+        };
+    });
+
+ </script>
+<!-- 
+</body>
+
+</html>  -->
