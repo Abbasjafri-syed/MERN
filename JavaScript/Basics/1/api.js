@@ -35,6 +35,61 @@ object = {
 console.log(object);
 
 jsonObject = JSON.stringify(object); // method to convert object into JSON
+
+// API Calling with fetch
+
+// fetch method returns a promise
+// promise is either ongoing, fulfilled or reject
+
+// link to html source
+let jokes = document.querySelector('#joke');
+let jokebtn = document.querySelector('#jokebtn');
+
+
+// Promise api calling
+fetchapi = () => {
+
+    const setHeader = { // setting data type to be returned as object
+        headers: {
+            Accept: 'application/json'
+        }
+    }
+    fetch('https://icanhazdadjoke.com/', setHeader) // returns a promise
+        .then((res) => res.json()) // data is retreived as an object
+        .then((data) => {
+            jokes.innerHTML = data.joke; // showing specific element inside the object
+            // console.log(data); // method to convert object into JSON
+        })
+        .catch((err) => { // if promise is not resolved then error is catched here
+            console.log(err);
+        })
+}
+jokebtn.addEventListener('click', fetchapi); // data from api will be called after event fired
+fetchapi(); // calling functio
+
+
+// async await api calling through 
+
+asyncapi = async () => {
+    const setHeader = { // setting data type to be returned as object
+        headers: {
+            Accept: 'application/json'
+        }
+    }
+    try {
+        api = await fetch('https://icanhazdadjoke.com/', setHeader); // waiting for the return to be promised
+        data = await api.json(); // waiting for the data to be converted to object
+        jokes.innerHTML = await data.joke;
+        console.log(data);
+    } catch (err) { // if promise is not resolved then error is catched here
+        console.log(err); //
+    }
+}
+
+jokebtn.addEventListener('click', asyncapi); // data from api will be called after event fired
+asyncapi(); // calling function for first time at time of loading
+
+
 console.log(jsonObject);
 
 objectJSON = JSON.parse(jsonObject); // method to convert JSON into object
