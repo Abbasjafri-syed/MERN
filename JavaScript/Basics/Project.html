@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+    <title>ProjectJS</title>
+</head>
+
+<body>
+
+    <!-- project event change picture change -->
+    <!-- <h1>Chuck why so Serious?</h1>
+
+    <img src="./Images/chuck.jpg" alt="Chuck sober" id="chucksober">
+    <br><br>
+    <button onclick="document.getElementById('chucksober').src='./Images/chuck.jpg'">Sober</button>
+    <button onclick="document.getElementById('chucksober').src='./Images/chuck1.jpg'">Naughty</button> -->
+
+
+    <!-- project of changing element with time based events -->
+    <!-- 
+    <div class="outerdiv">
+        <div class="innerdiv">
+            <h1 id="inner" style="align-content: center; color: blue;">I am thermometer <span id="temp"
+                    class="fa"></span></h1>
+
+            <h2 id="chuck"></h2>
+        </div>
+    </div>
+
+    <script>
+
+
+        // // img = document.createElement('img'); // create element 
+        // // temp = document.getElementById('temp');
+
+        // // img.src = './Images/chuck.jpg'; // source of the picture
+        // // temp.appendChild(img); // calling the image into the element
+
+        // let img = document.createElement("img");
+        // var img2 = document.createElement("img");
+
+        // img.src = "./Images/chuck.jpg";
+        // img2.src = "./Images/chuck1.jpg";
+
+
+        // let chuck = document.getElementById("chuck");
+
+        // const tempload = () => {
+        //     temp = document.getElementById('temp');
+
+        //     setTimeout(() => {
+        //         temp.innerHTML = '&#xf2cb'; // calling image inside the element
+        //         temp.style.color = 'blue';
+        //         chuck.appendChild(img); // showing image inside the element 
+        //         chuck.removeChild(img2); // removing second child for parallel element creation
+        //     }, 2);
+
+        //     setTimeout(() => {
+        //         chuck.removeChild(img); // removing image
+        //     }, 999);
+
+        //     setTimeout(() => {
+        //         temp.innerHTML = '&#xf2ca';
+        //         chuck.appendChild(img2); // recalling secong image
+
+        //     }, 1000);
+
+        //     setTimeout(() => {
+        //         temp.innerHTML = '&#xf2c8';
+        //         chuck.removeChild(img2);
+        //         chuck.appendChild(img);
+
+        //     }, 1500);
+
+        //     setTimeout(() => {
+        //         temp.innerHTML = '&#xf2c7';
+        //         temp.style.color = 'red'; // changing color through css
+        //         chuck.removeChild(img);
+        //         chuck.appendChild(img2);
+        //     }, 2000);
+        // }
+        // tempload();
+
+        // setInterval(tempload, 2350); // function in setinterval is called without parentheses...
+
+    </script> -->
+
+    <!-- calculator project -->
+
+    <!-- return false eliminate auto submision -->
+    <!-- <form id="calculate" onsubmit="calculate(); return false">
+        <!-- form tag where all form elements goes....onsubmit means call function when submit false means no auto submit-->
+    <!-- <label> Enter you Temprature</label> Label is description of form -->
+    <!-- <br /> <br />
+        <input type="number" id="temp"> <!-- input which only takes integer -->
+    <!-- <select id="tempdiff"> <!-- tag which has drop down menu as options -->
+    <!-- <option value="Celsius">Celsius</option> <!-- options as drop down list -->
+    <!-- <option value="Far">Farhenhiet</option> --> --> --> -->
+    <!-- </select> -->
+    <!-- <br /> <br />
+        <input type="submit"> <!-- input which acts as submit button -->
+    <!-- <br /> <br />
+        <p id="value"></p>  -->
+    <!-- element where result is shown --> --> -->
+
+    <!-- </form>  -->
+
+    <!-- <script> // element where all JS code goes
+        calculate = () => {
+            temp = document.getElementById('temp').value; // storing value of temperature entered
+            // console.log(temp);
+
+            tempordr = document.getElementById('tempdiff'); // storing select list
+            // console.log(tempordr);
+            tempindx = tempdiff.options[tempordr.selectedIndex].value; // storing value of option selected
+
+            // console.log(tempindx);
+
+            c2f = (cel) => { // function taking argument and carry calculation
+                farhenhiet = Math.round(cel * 9) / 5 + 32;
+                return farhenhiet;
+            }
+
+            f2c = (far) => {
+                celsuis = (Math.round(far - 32) * 5 / 9).toFixed(3);
+                return celsuis;
+            }
+
+            let result;
+
+            if (tempindx == 'Celsius') { // checking value of tempindex
+                result = c2f(temp); // storing value passed in function
+                document.getElementById('value').innerHTML = `${result} Farhenhiet`;
+            } else {
+                result = f2c(temp);
+                document.getElementById('value').innerHTML = `${result} Celsius`;
+            }
+        }
+    </script> -->
+
+    <!-- Project countr Increment -->
+<!-- <body bgcolor="violet">
+
+    <div class="counter">
+        <i class="fas fa-users fa-2x"></i>
+        <br>
+        <div class="count" plate="95677"></div>
+        <p class="text">Client Satisfied</p>
+    </div>
+    <br>
+
+    <div class="counter">
+        <i class="fas fa-tasks fa-2x"></i>
+        <br>
+        <div class="count" plate="62970"></div>
+        <p class="text">Project on Working</p>
+    </div>
+
+    <br>
+
+    <div class="counter">
+        <i class="fas fa-mug-hot fa-2x"></i> // font awesome logos
+        <div class="count" plate="23456"></div>  <!-- element where code will be inserted -->
+        <!-- <p class="text">project Completed</p>
+    </div> -->
+
+<!-- </body> --> -->
+
+
+<!-- <script>
+    countr = document.querySelectorAll('.count'); // chosing class in which counter will be run
+
+    countr.forEach((data) => { // loop on all elements
+        // console.log(data);
+        data.innerHTML = 0; // setting inital value as zero
+
+        const prjctcounter = () => {
+            value = +data.getAttribute('plate'); // changing attribute data type
+            // console.log(value); // 
+
+            initValue = +data.innerHTML; //storing inital value as integer
+            // console.log(initValue); //
+
+            incrmnt = Math.round(value / 40); // creating increment logic 
+
+            if (initValue < value) { // run code when initial value is less than value
+                data.innerHTML = initValue + incrmnt; // changing innerHTML value
+                setTimeout(prjctcounter, 50); // calling function every 50 millisecond
+            } else {
+                data.innerHTML = value;
+            }
+        }
+        prjctcounter(); // calling the function
+    });
+
+</script> -->
+
+</body>
+
+</html>
