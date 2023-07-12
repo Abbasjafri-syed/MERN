@@ -4,14 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-
     <title>ProjectJS</title>
 </head>
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
 
-<body>
+<!-- <body> -->
 
-    <!-- project event change picture change -->
-    <!-- <h1>Chuck why so Serious?</h1>
+<!-- project event change picture change -->
+<!-- <h1>Chuck why so Serious?</h1>
 
     <img src="./Images/chuck.jpg" alt="Chuck sober" id="chucksober">
     <br><br>
@@ -19,8 +23,8 @@
     <button onclick="document.getElementById('chucksober').src='./Images/chuck1.jpg'">Naughty</button> -->
 
 
-    <!-- project of changing element with time based events -->
-    <!-- 
+<!-- project of changing element with time based events -->
+<!-- 
     <div class="outerdiv">
         <div class="innerdiv">
             <h1 id="inner" style="align-content: center; color: blue;">I am thermometer <span id="temp"
@@ -88,27 +92,27 @@
 
     </script> -->
 
-    <!-- calculator project -->
+<!-- calculator project -->
 
-    <!-- return false eliminate auto submision -->
-    <!-- <form id="calculate" onsubmit="calculate(); return false">
+<!-- return false eliminate auto submision -->
+<!-- <form id="calculate" onsubmit="calculate(); return false">
         <!-- form tag where all form elements goes....onsubmit means call function when submit false means no auto submit-->
-    <!-- <label> Enter you Temprature</label> Label is description of form -->
-    <!-- <br /> <br />
+<!-- <label> Enter you Temprature</label> Label is description of form -->
+<!-- <br /> <br />
         <input type="number" id="temp"> <!-- input which only takes integer -->
-    <!-- <select id="tempdiff"> <!-- tag which has drop down menu as options -->
-    <!-- <option value="Celsius">Celsius</option> <!-- options as drop down list -->
-    <!-- <option value="Far">Farhenhiet</option> --> --> --> -->
-    <!-- </select> -->
-    <!-- <br /> <br />
+<!-- <select id="tempdiff"> <!-- tag which has drop down menu as options -->
+<!-- <option value="Celsius">Celsius</option> <!-- options as drop down list -->
+<!-- <option value="Far">Farhenhiet</option> --> --> --> -->
+<!-- </select> -->
+<!-- <br /> <br />
         <input type="submit"> <!-- input which acts as submit button -->
-    <!-- <br /> <br />
+<!-- <br /> <br />
         <p id="value"></p>  -->
-    <!-- element where result is shown --> --> -->
+<!-- element where result is shown --> --> -->
 
-    <!-- </form>  -->
+<!-- </form>  -->
 
-    <!-- <script> // element where all JS code goes
+<!-- <script> // element where all JS code goes
         calculate = () => {
             temp = document.getElementById('temp').value; // storing value of temperature entered
             // console.log(temp);
@@ -141,7 +145,7 @@
         }
     </script> -->
 
-    <!-- Project countr Increment -->
+<!-- Project countr Increment -->
 <!-- <body bgcolor="violet">
 
     <div class="counter">
@@ -164,7 +168,7 @@
     <div class="counter">
         <i class="fas fa-mug-hot fa-2x"></i> // font awesome logos
         <div class="count" plate="23456"></div>  <!-- element where code will be inserted -->
-        <!-- <p class="text">project Completed</p>
+<!-- <p class="text">project Completed</p>
     </div> -->
 
 <!-- </body> --> -->
@@ -197,6 +201,95 @@
     });
 
 </script> -->
+
+
+<!-- notes keeping project in local storage -->
+<style>
+    /* internal css */
+    .hidden {
+        display: none;
+    }
+</style>
+
+<body bgcolor="lightskyblue"> <!-- giving background colour to whole body -->
+    <div class="heading" style="background-color: gold;"> <!-- creating div for heading -->
+        <i class="far fa-sticky-note"> Keep Notes</i> <!-- symbol from font awesome...far main class to call -->
+    </div>
+    <br />
+    <div class="btn">
+        <button class="click" id="btn">Add Notes</button> <!-- creating a button -->
+    </div>
+    <br />
+
+
+    <script> // all js code inside this tag
+        button = document.querySelector('#btn'); // saving id inside a variable
+
+        addNotes = (text = '') => { // creating a fat arrow function
+            const notes = document.createElement('div'); //creating a div
+            notes.classList.add('notes'); // adding div inside a class
+
+            htmlNotes = `
+            <div class="operation"> <!-- creating div and adding button with symbol -->
+        <button class="edit">
+            <i class="far fa-edit"></i>
+        </button>
+        <button class="del">
+            <i class="far fa-trash-alt"></i>
+        </button>
+    </div>
+    <div class="main ${text ? '' : 'hidden'}"></div>
+    <textarea class="${text ? 'hidden' : ''}" id="" cols="22" rows="07"
+        style="background-color: lightseagreen;"></textarea> <!-- element for entering text with giving bgcolor -->
+        <br /><br />
+            `
+            notes.insertAdjacentHTML('afterbegin', htmlNotes); // inserting element inside a div
+            document.body.appendChild(notes); // calling an element
+
+            dlet = notes.querySelector('.del'); // saving element as per class inside a variable
+            edit = notes.querySelector('.edit');
+            main = notes.querySelector('.main');
+            textlink = notes.querySelector('textarea');
+
+            dlet.addEventListener('click', () => {// adding event for deleting
+                notes.remove();
+                lsData(); // updating after calling event
+            });
+
+            textlink.value = text;
+            main.innerHTML = text;
+
+            edit.addEventListener('click', () => { // adding events for toggle as per condition
+                main.classList.toggle('hidden');
+                textlink.classList.toggle('hidden');
+                // some error in toggle need resolution
+            });
+
+            textlink.addEventListener('change', (event) => { // saving value inside a variable as
+                const val = event.target.value; // getting value of event and saving in a variable
+                main.innerHTML = val; // saving inside element
+                lsData();
+            });
+        }
+        const lsData = () => {
+            const textData = document.querySelectorAll('textarea'); // saving all text box inside var
+            const noteSave = []; // creating empty array
+
+            textData.forEach((note) => { //pusing each text box value inside array
+                return noteSave.push(note.value);
+            });
+            localStorage.setItem('Notes', JSON.stringify(noteSave)) // saving array data ito local storage
+        }
+
+        const Notess = JSON.parse(localStorage.getItem('Notes')) // parsing saved data into read able formate
+
+        if (Notess) { // calling any data if present
+            Notess.forEach((noter) => addNotes(noter) // saving parsed data  inside function
+            );
+        }
+        button.addEventListener('click', () => addNotes()); // adding event and calling function in it
+
+    </script>
 
 </body>
 
